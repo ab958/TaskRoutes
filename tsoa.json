@@ -1,0 +1,56 @@
+{
+  "entryFile": "src/index.ts",
+  "noImplicitAdditionalProperties": "throw-on-extras",
+  "spec": {
+    "name": "Government Digital Service APIs",
+    "version": "v1",
+    "contact": {
+      "name": "Oraclo LTD",
+      "email": "admin@orcalo.co.uk",
+      "url": "https://orcalo.co.uk/"
+    },
+    "outputDirectory": "public/swagger/v1/",
+    "routesDir": "temp",
+    "specVersion": 3,
+    "securityDefinitions": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "name": "Authorization",
+        "in": "header",
+        "bearerFormat": "JWT"
+      },
+      "apiKeyAuth": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "X-API-KEY"
+      }
+    },
+    "tags": [
+      {
+        "name": "UK Bank Holidays",
+        "description": "Bank Holidays | Returns JSON calender data of UK bank holidays with a divisions hash for separate data per region (united-kingdom, england-and-wales, scotland or northern-ireland)"
+      },
+      {
+        "name": "Data.gov.uk Dataset",
+        "description": "This API allows you to access the data.gov.uk dataset metadata in a machine-readable way, as JSON. A dataset's metadata includes details such as title, description, usage licence, and a list of 'resources', which describe each data file that makes up the dataset. Each resource contains a format, description and URL (for example for download)"
+      },{
+        "name": "Ambulance Analytics",
+        "description": "Submit ambulance analytics data to our Data Processing Service (DPS) for analysis and review by NHS England and ambulance trusts."
+      },{
+        "name" : "Cyber Alerts",
+        "description" : "Access a feed of alerts issued by our cyber security centre."
+      },{
+        "name" : "Data Registers Service",
+        "description" : "Responding to demand from across the health system, NHS Digital have developed the Data Registers Service. This will provide a single trusted source and location for data registers."
+      },{
+        "name" : "Personal Demographics Service",
+        "description" : "Use this API to access the Personal Demographics Service (PDS) - the national electronic database of NHS patient details such as name, address, date of birth, related people, registered GP and NHS number" 
+      }
+    ]
+  },
+  "routes": {
+    "basePath": "/",
+    "routesDir": "./src/routes/tsoaRoutes"
+  }
+}

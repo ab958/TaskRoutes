@@ -1,0 +1,2156 @@
+{
+	"components": {
+		"examples": {},
+		"headers": {},
+		"parameters": {},
+		"requestBodies": {},
+		"responses": {},
+		"schemas": {
+			"Iambulance": {
+				"properties": {
+					"massage": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"massage"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"Notes": {
+				"enum": [
+					"",
+					"Substitute day"
+				],
+				"type": "string"
+			},
+			"Event": {
+				"properties": {
+					"title": {
+						"type": "string"
+					},
+					"date": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"notes": {
+						"$ref": "#/components/schemas/Notes"
+					},
+					"bunting": {
+						"type": "boolean"
+					}
+				},
+				"required": [
+					"title",
+					"date",
+					"notes",
+					"bunting"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"DivisionEvents": {
+				"properties": {
+					"division": {
+						"type": "string"
+					},
+					"events": {
+						"items": {
+							"$ref": "#/components/schemas/Event"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"division",
+					"events"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"IGetBankHolidaysResponse": {
+				"properties": {
+					"england-and-wales": {
+						"$ref": "#/components/schemas/DivisionEvents"
+					},
+					"scotland": {
+						"$ref": "#/components/schemas/DivisionEvents"
+					},
+					"northern-ireland": {
+						"$ref": "#/components/schemas/DivisionEvents"
+					},
+					"united-kingdom": {
+						"$ref": "#/components/schemas/DivisionEvents"
+					}
+				},
+				"required": [
+					"england-and-wales",
+					"scotland",
+					"northern-ireland",
+					"united-kingdom"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"BasicNotFoundError": {
+				"properties": {
+					"statusCode": {
+						"type": "number",
+						"format": "double"
+					},
+					"message": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"statusCode",
+					"message"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"Severity": {
+				"enum": [
+					"Low",
+					"Medium"
+				],
+				"type": "string"
+			},
+			"SeverityStatusHistory1": {
+				"properties": {
+					"severity": {
+						"$ref": "#/components/schemas/Severity"
+					},
+					"date": {
+						"type": "number",
+						"format": "double"
+					},
+					"hippoDocumentBean": {
+						"type": "boolean"
+					},
+					"hippoFolderBean": {
+						"type": "boolean"
+					},
+					"versionedNode": {
+						"type": "boolean"
+					},
+					"leaf": {
+						"type": "boolean"
+					}
+				},
+				"required": [
+					"severity",
+					"date",
+					"hippoDocumentBean",
+					"hippoFolderBean",
+					"versionedNode",
+					"leaf"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"Threat1": {
+				"enum": [
+					"",
+					"Vulnerability"
+				],
+				"type": "string"
+			},
+			"ThreatAffect1": {
+				"properties": {
+					"hippoDocumentBean": {
+						"type": "boolean"
+					},
+					"hippoFolderBean": {
+						"type": "boolean"
+					},
+					"versionedNode": {
+						"type": "boolean"
+					},
+					"leaf": {
+						"type": "boolean"
+					},
+					"platformText": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"hippoDocumentBean",
+					"hippoFolderBean",
+					"versionedNode",
+					"leaf",
+					"platformText"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"RemediationStep1": {
+				"properties": {
+					"link": {
+						"type": "string"
+					},
+					"type": {
+						"type": "string"
+					},
+					"hippoDocumentBean": {
+						"type": "boolean"
+					},
+					"hippoFolderBean": {
+						"type": "boolean"
+					},
+					"versionedNode": {
+						"type": "boolean"
+					},
+					"leaf": {
+						"type": "boolean"
+					},
+					"step": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"link",
+					"type",
+					"hippoDocumentBean",
+					"hippoFolderBean",
+					"versionedNode",
+					"leaf",
+					"step"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"CveIdentifier1": {
+				"properties": {
+					"cveStatus": {
+						"type": "string"
+					},
+					"cveIdentifier": {
+						"type": "string"
+					},
+					"hippoDocumentBean": {
+						"type": "boolean"
+					},
+					"hippoFolderBean": {
+						"type": "boolean"
+					},
+					"versionedNode": {
+						"type": "boolean"
+					},
+					"leaf": {
+						"type": "boolean"
+					},
+					"cveText": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"cveStatus",
+					"cveIdentifier",
+					"hippoDocumentBean",
+					"hippoFolderBean",
+					"versionedNode",
+					"leaf",
+					"cveText"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"SectionType": {
+				"enum": [
+					"website-section"
+				],
+				"type": "string"
+			},
+			"Section1": {
+				"properties": {
+					"sectionType": {
+						"$ref": "#/components/schemas/SectionType"
+					},
+					"isNumberedList": {
+						"type": "boolean"
+					},
+					"title": {
+						"type": "string"
+					},
+					"type": {
+						"type": "string"
+					},
+					"hippoDocumentBean": {
+						"type": "boolean"
+					},
+					"hippoFolderBean": {
+						"type": "boolean"
+					},
+					"versionedNode": {
+						"type": "boolean"
+					},
+					"leaf": {
+						"type": "boolean"
+					},
+					"html": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"sectionType",
+					"isNumberedList",
+					"title",
+					"type",
+					"hippoDocumentBean",
+					"hippoFolderBean",
+					"versionedNode",
+					"leaf",
+					"html"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"Category": {
+				"enum": [
+					"",
+					"Exploit"
+				],
+				"type": "string"
+			},
+			"Item1": {
+				"properties": {
+					"threatId": {
+						"type": "string"
+					},
+					"sourceOfThreatUpdates": {
+						"items": {},
+						"type": "array"
+					},
+					"cyberAcknowledgements": {
+						"items": {},
+						"type": "array"
+					},
+					"severityStatusHistory": {
+						"items": {
+							"$ref": "#/components/schemas/SeverityStatusHistory1"
+						},
+						"type": "array"
+					},
+					"threatType": {
+						"$ref": "#/components/schemas/Threat1"
+					},
+					"threatvector": {
+						"items": {
+							"$ref": "#/components/schemas/Threat1"
+						},
+						"type": "array"
+					},
+					"threatAffects": {
+						"items": {
+							"$ref": "#/components/schemas/ThreatAffect1"
+						},
+						"type": "array"
+					},
+					"threatUpdates": {
+						"items": {},
+						"type": "array"
+					},
+					"remediationSteps": {
+						"items": {
+							"$ref": "#/components/schemas/RemediationStep1"
+						},
+						"type": "array"
+					},
+					"indicatorsCompromise": {
+						"items": {},
+						"type": "array"
+					},
+					"ncscLink": {
+						"type": "string"
+					},
+					"cveIdentifiers": {
+						"items": {
+							"$ref": "#/components/schemas/CveIdentifier1"
+						},
+						"type": "array"
+					},
+					"shortsummary": {
+						"type": "string"
+					},
+					"publishedDate": {
+						"type": "number",
+						"format": "double"
+					},
+					"severity": {
+						"$ref": "#/components/schemas/Severity"
+					},
+					"sections": {
+						"items": {
+							"$ref": "#/components/schemas/Section1"
+						},
+						"type": "array"
+					},
+					"basePath": {
+						"type": "string"
+					},
+					"category": {
+						"items": {
+							"$ref": "#/components/schemas/Category"
+						},
+						"type": "array"
+					},
+					"fullTaxonomyList": {
+						"items": {},
+						"type": "array"
+					},
+					"title": {
+						"type": "string"
+					},
+					"versionedNode": {
+						"type": "boolean"
+					},
+					"remediationIntro": {
+						"type": "string"
+					},
+					"summary": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"threatId",
+					"sourceOfThreatUpdates",
+					"cyberAcknowledgements",
+					"severityStatusHistory",
+					"threatType",
+					"threatvector",
+					"threatAffects",
+					"threatUpdates",
+					"remediationSteps",
+					"indicatorsCompromise",
+					"ncscLink",
+					"cveIdentifiers",
+					"shortsummary",
+					"publishedDate",
+					"severity",
+					"sections",
+					"basePath",
+					"category",
+					"fullTaxonomyList",
+					"title",
+					"versionedNode",
+					"remediationIntro",
+					"summary"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"Welcome": {
+				"properties": {
+					"pageSize": {
+						"type": "number",
+						"format": "double"
+					},
+					"total": {
+						"type": "number",
+						"format": "double"
+					},
+					"items": {
+						"items": {
+							"$ref": "#/components/schemas/Item1"
+						},
+						"type": "array"
+					},
+					"currentPage": {
+						"type": "number",
+						"format": "double"
+					},
+					"totalPages": {
+						"type": "number",
+						"format": "double"
+					}
+				},
+				"required": [
+					"pageSize",
+					"total",
+					"items",
+					"currentPage",
+					"totalPages"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"Section": {
+				"properties": {
+					"title": {
+						"type": "string"
+					},
+					"isNumberedList": {
+						"type": "boolean"
+					},
+					"headingLevel": {
+						"type": "string"
+					},
+					"sectionType": {
+						"type": "string"
+					},
+					"type": {
+						"type": "string"
+					},
+					"hippoDocumentBean": {
+						"type": "boolean"
+					},
+					"hippoFolderBean": {
+						"type": "boolean"
+					},
+					"versionedNode": {
+						"type": "boolean"
+					},
+					"leaf": {
+						"type": "boolean"
+					},
+					"html": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"title",
+					"isNumberedList",
+					"headingLevel",
+					"sectionType",
+					"type",
+					"hippoDocumentBean",
+					"hippoFolderBean",
+					"versionedNode",
+					"leaf",
+					"html"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"SeverityStatusHistory": {
+				"properties": {
+					"severity": {
+						"type": "string"
+					},
+					"date": {
+						"type": "number",
+						"format": "double"
+					},
+					"hippoDocumentBean": {
+						"type": "boolean"
+					},
+					"hippoFolderBean": {
+						"type": "boolean"
+					},
+					"versionedNode": {
+						"type": "boolean"
+					},
+					"leaf": {
+						"type": "boolean"
+					}
+				},
+				"required": [
+					"severity",
+					"date",
+					"hippoDocumentBean",
+					"hippoFolderBean",
+					"versionedNode",
+					"leaf"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"IndicatorsCompromise": {
+				"properties": {
+					"audience": {
+						"type": "string"
+					},
+					"heading": {
+						"type": "string"
+					},
+					"sectionType": {
+						"type": "string"
+					},
+					"hippoDocumentBean": {
+						"type": "boolean"
+					},
+					"hippoFolderBean": {
+						"type": "boolean"
+					},
+					"versionedNode": {
+						"type": "boolean"
+					},
+					"leaf": {
+						"type": "boolean"
+					},
+					"content": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"audience",
+					"heading",
+					"sectionType",
+					"hippoDocumentBean",
+					"hippoFolderBean",
+					"versionedNode",
+					"leaf",
+					"content"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"CveIdentifier": {
+				"properties": {
+					"cveIdentifier": {
+						"type": "string"
+					},
+					"cveStatus": {
+						"type": "string"
+					},
+					"hippoDocumentBean": {
+						"type": "boolean"
+					},
+					"hippoFolderBean": {
+						"type": "boolean"
+					},
+					"versionedNode": {
+						"type": "boolean"
+					},
+					"leaf": {
+						"type": "boolean"
+					},
+					"cveText": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"cveIdentifier",
+					"cveStatus",
+					"hippoDocumentBean",
+					"hippoFolderBean",
+					"versionedNode",
+					"leaf",
+					"cveText"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"ThreatAffect": {
+				"properties": {
+					"versionsAffected": {
+						"items": {
+							"type": "string"
+						},
+						"type": "array"
+					},
+					"hippoDocumentBean": {
+						"type": "boolean"
+					},
+					"hippoFolderBean": {
+						"type": "boolean"
+					},
+					"versionedNode": {
+						"type": "boolean"
+					},
+					"leaf": {
+						"type": "boolean"
+					},
+					"platformText": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"versionsAffected",
+					"hippoDocumentBean",
+					"hippoFolderBean",
+					"versionedNode",
+					"leaf",
+					"platformText"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"RemediationStep": {
+				"properties": {
+					"link": {
+						"type": "string"
+					},
+					"type": {
+						"type": "string"
+					},
+					"hippoDocumentBean": {
+						"type": "boolean"
+					},
+					"hippoFolderBean": {
+						"type": "boolean"
+					},
+					"versionedNode": {
+						"type": "boolean"
+					},
+					"leaf": {
+						"type": "boolean"
+					},
+					"step": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"link",
+					"type",
+					"hippoDocumentBean",
+					"hippoFolderBean",
+					"versionedNode",
+					"leaf",
+					"step"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"Welcome1": {
+				"properties": {
+					"severity": {
+						"type": "string"
+					},
+					"category": {
+						"items": {
+							"type": "string"
+						},
+						"type": "array"
+					},
+					"basePath": {
+						"type": "string"
+					},
+					"sections": {
+						"items": {
+							"$ref": "#/components/schemas/Section"
+						},
+						"type": "array"
+					},
+					"threatId": {
+						"type": "string"
+					},
+					"shortsummary": {
+						"type": "string"
+					},
+					"publishedDate": {
+						"type": "number",
+						"format": "double"
+					},
+					"fullTaxonomyList": {
+						"items": {},
+						"type": "array"
+					},
+					"seosummaryJson": {
+						"type": "string"
+					},
+					"sourceOfThreatUpdates": {
+						"items": {
+							"type": "string"
+						},
+						"type": "array"
+					},
+					"cyberAcknowledgements": {
+						"items": {},
+						"type": "array"
+					},
+					"severityStatusHistory": {
+						"items": {
+							"$ref": "#/components/schemas/SeverityStatusHistory"
+						},
+						"type": "array"
+					},
+					"indicatorsCompromise": {
+						"items": {
+							"$ref": "#/components/schemas/IndicatorsCompromise"
+						},
+						"type": "array"
+					},
+					"cveIdentifiers": {
+						"items": {
+							"$ref": "#/components/schemas/CveIdentifier"
+						},
+						"type": "array"
+					},
+					"threatType": {
+						"type": "string"
+					},
+					"threatvector": {
+						"items": {},
+						"type": "array"
+					},
+					"threatAffects": {
+						"items": {
+							"$ref": "#/components/schemas/ThreatAffect"
+						},
+						"type": "array"
+					},
+					"threatUpdates": {
+						"items": {},
+						"type": "array"
+					},
+					"remediationSteps": {
+						"items": {
+							"$ref": "#/components/schemas/RemediationStep"
+						},
+						"type": "array"
+					},
+					"ncscLink": {
+						"type": "string"
+					},
+					"title": {
+						"type": "string"
+					},
+					"versionedNode": {
+						"type": "boolean"
+					},
+					"remediationIntro": {
+						"type": "string"
+					},
+					"summary": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"severity",
+					"category",
+					"basePath",
+					"sections",
+					"threatId",
+					"shortsummary",
+					"publishedDate",
+					"fullTaxonomyList",
+					"seosummaryJson",
+					"sourceOfThreatUpdates",
+					"cyberAcknowledgements",
+					"severityStatusHistory",
+					"indicatorsCompromise",
+					"cveIdentifiers",
+					"threatType",
+					"threatvector",
+					"threatAffects",
+					"threatUpdates",
+					"remediationSteps",
+					"ncscLink",
+					"title",
+					"versionedNode",
+					"remediationIntro",
+					"summary"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"IGetListDataSetsResponse": {
+				"properties": {
+					"help": {
+						"type": "string"
+					},
+					"success": {
+						"type": "boolean"
+					},
+					"result": {
+						"items": {
+							"type": "string"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"help",
+					"success",
+					"result"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"ColumnType2": {
+				"enum": [
+					"date",
+					"int",
+					"varchar"
+				],
+				"type": "string"
+			},
+			"IsNullable2": {
+				"enum": [
+					"No",
+					"Yes"
+				],
+				"type": "string"
+			},
+			"Welcome2": {
+				"properties": {
+					"column_type": {
+						"$ref": "#/components/schemas/ColumnType2"
+					},
+					"max_length": {
+						"type": "number",
+						"format": "double",
+						"nullable": true
+					},
+					"is_nullable": {
+						"$ref": "#/components/schemas/IsNullable2"
+					},
+					"primary_key": {
+						"$ref": "#/components/schemas/IsNullable2"
+					},
+					"extended_properties": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"column_type",
+					"max_length",
+					"is_nullable",
+					"primary_key",
+					"extended_properties"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"Welcome4": {
+				"properties": {
+					"ONS_CHD_GEO_LISTINGS_KEY": {
+						"type": "number",
+						"format": "double"
+					},
+					"GEOGRAPHY_CODE": {
+						"type": "string"
+					},
+					"GEOGRAPHY_NAME": {
+						"type": "string"
+					},
+					"WELSH_GEOGRAPHY_NAME": {
+						"type": "number",
+						"enum": [
+							null
+						],
+						"nullable": true
+					},
+					"SI_NUMBER": {
+						"type": "string"
+					},
+					"SI_TITLE": {
+						"type": "string"
+					},
+					"DATE_OF_OPERATION": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"DATE_OF_TERMINATION": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"PARENT_GEOGRAPHY_CODE": {
+						"type": "string"
+					},
+					"ENTITY_CODE": {
+						"type": "string"
+					},
+					"ENTITY_OWNER": {
+						"type": "string"
+					},
+					"IS_CURRENT": {
+						"type": "number",
+						"format": "double"
+					},
+					"SYSTEM_CREATED_DATE": {
+						"type": "string",
+						"format": "date-time"
+					}
+				},
+				"required": [
+					"ONS_CHD_GEO_LISTINGS_KEY",
+					"GEOGRAPHY_CODE",
+					"GEOGRAPHY_NAME",
+					"WELSH_GEOGRAPHY_NAME",
+					"SI_NUMBER",
+					"SI_TITLE",
+					"DATE_OF_OPERATION",
+					"DATE_OF_TERMINATION",
+					"PARENT_GEOGRAPHY_CODE",
+					"ENTITY_CODE",
+					"ENTITY_OWNER",
+					"IS_CURRENT",
+					"SYSTEM_CREATED_DATE"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"Search3": {
+				"properties": {
+					"score": {
+						"type": "number",
+						"format": "double"
+					}
+				},
+				"required": [
+					"score"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"Security3": {
+				"properties": {
+					"system": {
+						"type": "string"
+					},
+					"code": {
+						"type": "string"
+					},
+					"display": {
+						"type": "string"
+					},
+					"version": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"system",
+					"code",
+					"display"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"Relationship3": {
+				"properties": {
+					"coding": {
+						"items": {
+							"$ref": "#/components/schemas/Security3"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"coding"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"IdentifierExtension3": {
+				"properties": {
+					"url": {
+						"type": "string"
+					},
+					"valueCodeableConcept": {
+						"$ref": "#/components/schemas/Relationship3"
+					}
+				},
+				"required": [
+					"url",
+					"valueCodeableConcept"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"IdentifierElement3": {
+				"properties": {
+					"system": {
+						"type": "string"
+					},
+					"value": {
+						"type": "string"
+					},
+					"extension": {
+						"items": {
+							"$ref": "#/components/schemas/IdentifierExtension3"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"system",
+					"value",
+					"extension"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"Meta3": {
+				"properties": {
+					"versionId": {
+						"type": "string"
+					},
+					"security": {
+						"items": {
+							"$ref": "#/components/schemas/Security3"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"versionId",
+					"security"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"Period3": {
+				"properties": {
+					"start": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"end": {
+						"type": "string",
+						"format": "date-time"
+					}
+				},
+				"required": [
+					"start",
+					"end"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"Name3": {
+				"properties": {
+					"id": {
+						"type": "string"
+					},
+					"use": {
+						"type": "string"
+					},
+					"period": {
+						"$ref": "#/components/schemas/Period3"
+					},
+					"given": {
+						"items": {
+							"type": "string"
+						},
+						"type": "array"
+					},
+					"family": {
+						"type": "string"
+					},
+					"prefix": {
+						"items": {
+							"type": "string"
+						},
+						"type": "array"
+					},
+					"suffix": {
+						"items": {
+							"type": "string"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"id",
+					"use",
+					"period",
+					"given",
+					"family",
+					"prefix",
+					"suffix"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"ValueCoding3": {
+				"properties": {
+					"system": {
+						"type": "string"
+					},
+					"code": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"system",
+					"code"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"PurpleExtension3": {
+				"properties": {
+					"url": {
+						"type": "string"
+					},
+					"valueCoding": {
+						"$ref": "#/components/schemas/ValueCoding3"
+					},
+					"valueString": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"url"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"AddressExtension3": {
+				"properties": {
+					"url": {
+						"type": "string"
+					},
+					"extension": {
+						"items": {
+							"$ref": "#/components/schemas/PurpleExtension3"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"url",
+					"extension"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"Address3": {
+				"properties": {
+					"id": {
+						"type": "string"
+					},
+					"period": {
+						"$ref": "#/components/schemas/Period3"
+					},
+					"use": {
+						"type": "string"
+					},
+					"line": {
+						"items": {
+							"type": "string"
+						},
+						"type": "array"
+					},
+					"postalCode": {
+						"type": "string"
+					},
+					"extension": {
+						"items": {
+							"$ref": "#/components/schemas/AddressExtension3"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"id",
+					"period",
+					"use",
+					"line",
+					"postalCode",
+					"extension"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"TelecomExtension3": {
+				"properties": {
+					"url": {
+						"type": "string"
+					},
+					"valueCoding": {
+						"$ref": "#/components/schemas/Security3"
+					}
+				},
+				"required": [
+					"url",
+					"valueCoding"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"ResourceTelecom3": {
+				"properties": {
+					"id": {
+						"type": "string"
+					},
+					"period": {
+						"$ref": "#/components/schemas/Period3"
+					},
+					"system": {
+						"type": "string"
+					},
+					"value": {
+						"type": "string"
+					},
+					"use": {
+						"type": "string"
+					},
+					"extension": {
+						"items": {
+							"$ref": "#/components/schemas/TelecomExtension3"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"id",
+					"period",
+					"system",
+					"value",
+					"use"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"ContactTelecom3": {
+				"properties": {
+					"system": {
+						"type": "string"
+					},
+					"value": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"system",
+					"value"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"Contact3": {
+				"properties": {
+					"id": {
+						"type": "string"
+					},
+					"period": {
+						"$ref": "#/components/schemas/Period3"
+					},
+					"relationship": {
+						"items": {
+							"$ref": "#/components/schemas/Relationship3"
+						},
+						"type": "array"
+					},
+					"telecom": {
+						"items": {
+							"$ref": "#/components/schemas/ContactTelecom3"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"id",
+					"period",
+					"relationship",
+					"telecom"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"GeneralPractitionerIdentifier3": {
+				"properties": {
+					"system": {
+						"type": "string"
+					},
+					"value": {
+						"type": "string"
+					},
+					"period": {
+						"$ref": "#/components/schemas/Period3"
+					}
+				},
+				"required": [
+					"system",
+					"value",
+					"period"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"GeneralPractitioner3": {
+				"properties": {
+					"id": {
+						"type": "string"
+					},
+					"type": {
+						"type": "string"
+					},
+					"identifier": {
+						"$ref": "#/components/schemas/GeneralPractitionerIdentifier3"
+					}
+				},
+				"required": [
+					"id",
+					"type",
+					"identifier"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"FluffyExtension3": {
+				"properties": {
+					"url": {
+						"type": "string"
+					},
+					"valueCodeableConcept": {
+						"$ref": "#/components/schemas/Relationship3"
+					},
+					"valueDateTime": {
+						"type": "string",
+						"format": "date-time"
+					}
+				},
+				"required": [
+					"url"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"ResourceExtension3": {
+				"properties": {
+					"url": {
+						"type": "string"
+					},
+					"extension": {
+						"items": {
+							"$ref": "#/components/schemas/FluffyExtension3"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"url",
+					"extension"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"Resource3": {
+				"properties": {
+					"resourceType": {
+						"type": "string"
+					},
+					"id": {
+						"type": "string"
+					},
+					"identifier": {
+						"items": {
+							"$ref": "#/components/schemas/IdentifierElement3"
+						},
+						"type": "array"
+					},
+					"meta": {
+						"$ref": "#/components/schemas/Meta3"
+					},
+					"name": {
+						"items": {
+							"$ref": "#/components/schemas/Name3"
+						},
+						"type": "array"
+					},
+					"gender": {
+						"type": "string"
+					},
+					"birthDate": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"multipleBirthInteger": {
+						"type": "number",
+						"format": "double"
+					},
+					"deceasedDateTime": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"address": {
+						"items": {
+							"$ref": "#/components/schemas/Address3"
+						},
+						"type": "array"
+					},
+					"telecom": {
+						"items": {
+							"$ref": "#/components/schemas/ResourceTelecom3"
+						},
+						"type": "array"
+					},
+					"contact": {
+						"items": {
+							"$ref": "#/components/schemas/Contact3"
+						},
+						"type": "array"
+					},
+					"generalPractitioner": {
+						"items": {
+							"$ref": "#/components/schemas/GeneralPractitioner3"
+						},
+						"type": "array"
+					},
+					"extension": {
+						"items": {
+							"$ref": "#/components/schemas/ResourceExtension3"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"resourceType",
+					"id",
+					"identifier",
+					"meta",
+					"name",
+					"gender",
+					"birthDate",
+					"multipleBirthInteger",
+					"deceasedDateTime",
+					"address",
+					"telecom",
+					"contact",
+					"generalPractitioner",
+					"extension"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"Entry3": {
+				"properties": {
+					"fullUrl": {
+						"type": "string"
+					},
+					"search": {
+						"$ref": "#/components/schemas/Search3"
+					},
+					"resource": {
+						"$ref": "#/components/schemas/Resource3"
+					}
+				},
+				"required": [
+					"fullUrl",
+					"search",
+					"resource"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"personalDemo": {
+				"properties": {
+					"resourceType": {
+						"type": "string"
+					},
+					"type": {
+						"type": "string"
+					},
+					"timestamp": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"total": {
+						"type": "number",
+						"format": "double"
+					},
+					"entry": {
+						"items": {
+							"$ref": "#/components/schemas/Entry3"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"resourceType",
+					"type",
+					"timestamp",
+					"total",
+					"entry"
+				],
+				"type": "object",
+				"additionalProperties": false
+			}
+		},
+		"securitySchemes": {
+			"bearerAuth": {
+				"type": "http",
+				"scheme": "bearer",
+				"name": "Authorization",
+				"in": "header",
+				"bearerFormat": "JWT"
+			},
+			"apiKeyAuth": {
+				"type": "apiKey",
+				"in": "header",
+				"name": "X-API-KEY"
+			}
+		}
+	},
+	"info": {
+		"title": "Government Digital Service APIs",
+		"version": "v1",
+		"description": "The Government Digital Service (GDS) provides 12 APIs to get access to UK Govt. Services",
+		"contact": {
+			"name": "Oraclo LTD",
+			"email": "admin@orcalo.co.uk",
+			"url": "https://orcalo.co.uk/"
+		}
+	},
+	"openapi": "3.0.0",
+	"paths": {
+		"/v1/ambulance-data-submission/process-message": {
+			"post": {
+				"operationId": "PostAmbulanceData",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Iambulance"
+								},
+								"examples": {
+									"Example 1": {
+										"value": {
+											"message": "string"
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"summary": "This API is used to fetch list of Govt. of UK Data sets",
+				"tags": [
+					"Ambulance Analytics"
+				],
+				"security": [],
+				"parameters": []
+			}
+		},
+		"/v1/bank-holidays.json": {
+			"get": {
+				"operationId": "GetBankHolidays",
+				"responses": {
+					"200": {
+						"description": "List of UK Govt Bank Holidays",
+						"content": {
+							"application/json": {
+								"schema": {
+									"anyOf": [
+										{
+											"$ref": "#/components/schemas/IGetBankHolidaysResponse"
+										},
+										{
+											"$ref": "#/components/schemas/BasicNotFoundError"
+										}
+									]
+								},
+								"examples": {
+									"Example 1": {
+										"value": {
+											"england-and-wales": {
+												"division": "england-and-wales",
+												"events": [
+													{
+														"title": "Title String",
+														"date": "yyyy-mm-dd",
+														"notes": "",
+														"bunting": true
+													},
+													{
+														"title": "Title String",
+														"date": "yyyy-mm-dd",
+														"notes": "Notes String",
+														"bunting": true
+													}
+												]
+											},
+											"scotland": {
+												"division": "scotland",
+												"events": [
+													{
+														"title": "Title String",
+														"date": "yyyy-mm-dd",
+														"notes": "Notes String",
+														"bunting": true
+													},
+													{
+														"title": "Title String",
+														"date": "yyyy-mm-dd",
+														"notes": "",
+														"bunting": true
+													}
+												]
+											},
+											"northern-ireland": {
+												"division": "scotland",
+												"events": [
+													{
+														"title": "Title String",
+														"date": "yyyy-mm-dd",
+														"notes": "Notes String",
+														"bunting": true
+													},
+													{
+														"title": "Title String",
+														"date": "yyyy-mm-dd",
+														"notes": "",
+														"bunting": true
+													}
+												]
+											},
+											"united-kingdom": {
+												"division": "scotland",
+												"events": [
+													{
+														"title": "Title String",
+														"date": "yyyy-mm-dd",
+														"notes": "Notes String",
+														"bunting": true
+													},
+													{
+														"title": "Title String",
+														"date": "yyyy-mm-dd",
+														"notes": "",
+														"bunting": true
+													}
+												]
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"summary": "This API return UK bank holidays",
+				"tags": [
+					"UK Bank Holidays"
+				],
+				"security": [],
+				"parameters": []
+			}
+		},
+		"/v1/CyberAlerts": {
+			"get": {
+				"operationId": "GetCyberAlerts",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Welcome"
+								}
+							}
+						}
+					}
+				},
+				"summary": "This returns a list of cyber alerts",
+				"tags": [
+					"Cyber Alerts"
+				],
+				"security": [],
+				"parameters": []
+			}
+		},
+		"/v1/CyberAlerts/limited/{bool}": {
+			"get": {
+				"operationId": "GetCyberAlerts1",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Welcome"
+								}
+							}
+						}
+					}
+				},
+				"summary": "This returns a list of cyber alerts",
+				"tags": [
+					"Cyber Alerts"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"description": "Adding the _limited=boolean parameter returns only a limited subset of the most important fields",
+						"in": "path",
+						"name": "bool",
+						"required": true,
+						"schema": {
+							"type": "boolean"
+						}
+					}
+				]
+			}
+		},
+		"/v1/CyberAlerts/page/{pageNo}": {
+			"get": {
+				"operationId": "GetCyberAlerts2",
+				"responses": {
+					"200": {
+						"description": "0",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Welcome"
+								}
+							}
+						}
+					}
+				},
+				"summary": "This returns a list of cyber alerts",
+				"tags": [
+					"Cyber Alerts"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"description": "When requesting a full return of cyber alerts, you can return any page of the alerts shown by adding the &page=x, where x is the number of the page to be returned",
+						"in": "path",
+						"name": "pageNo",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			}
+		},
+		"/v1/CyberAlerts/thread/{threadId}": {
+			"get": {
+				"operationId": "GetCyberAlerts3",
+				"responses": {
+					"200": {
+						"description": "0",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Welcome1"
+								}
+							}
+						}
+					}
+				},
+				"summary": "This returns a list of cyber alerts",
+				"tags": [
+					"Cyber Alerts"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"description": "To return a single cyber alert, you must specify a threat ID, normally formatted CC-3327",
+						"in": "path",
+						"name": "threadId",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/v1/data.gov.uk/package_list": {
+			"get": {
+				"operationId": "GetPackageList",
+				"responses": {
+					"200": {
+						"description": "List of UK Govt List of datasets",
+						"content": {
+							"application/json": {
+								"schema": {
+									"anyOf": [
+										{
+											"$ref": "#/components/schemas/IGetListDataSetsResponse"
+										},
+										{
+											"$ref": "#/components/schemas/BasicNotFoundError"
+										}
+									]
+								},
+								"examples": {
+									"Example 1": {
+										"value": {
+											"help": "https://help.url.com",
+											"success": true,
+											"result": [
+												"dataset 01",
+												"dataset 02"
+											]
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"summary": "This API is used to fetch list of Govt. of UK Data sets",
+				"tags": [
+					"Data.gov.uk Dataset"
+				],
+				"security": [],
+				"parameters": []
+			}
+		},
+		"/v1/dataRegister/service": {
+			"get": {
+				"operationId": "GetDataSerivce",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {},
+								"examples": {
+									"Example 1": {
+										"value": [
+											"string"
+										]
+									}
+								}
+							}
+						}
+					}
+				},
+				"summary": "This API is used to fetch list of Govt. of UK Data sets",
+				"tags": [
+					"Data Registers Service"
+				],
+				"security": [],
+				"parameters": []
+			}
+		},
+		"/v1/dataRegister/dbo/table": {
+			"get": {
+				"operationId": "GetallTable",
+				"responses": {
+					"200": {
+						"description": "0",
+						"content": {
+							"application/json": {
+								"schema": {},
+								"examples": {
+									"Example 1": {
+										"value": [
+											"string"
+										]
+									}
+								}
+							}
+						}
+					}
+				},
+				"summary": "This API is used to fetch list of Govt. of UK Data sets",
+				"tags": [
+					"Data Registers Service"
+				],
+				"security": [],
+				"parameters": []
+			}
+		},
+		"/v1/dataRegister/dbo/table/ONS_CHD_GEO_LISTINGS/column": {
+			"get": {
+				"operationId": "GetallCol_inTable",
+				"responses": {
+					"200": {
+						"description": "0",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Welcome2"
+								}
+							}
+						}
+					}
+				},
+				"summary": "This API is used to fetch list of Govt. of UK Data sets",
+				"tags": [
+					"Data Registers Service"
+				],
+				"security": [],
+				"parameters": []
+			}
+		},
+		"/v1/dataRegister/dbo/table/ONS_CHD_GEO_LISTINGS/query/{pageNo}": {
+			"get": {
+				"operationId": "QueryPageNo",
+				"responses": {
+					"200": {
+						"description": "0",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Welcome4"
+								}
+							}
+						}
+					}
+				},
+				"summary": "This returns a list of cyber alerts",
+				"tags": [
+					"Data Registers Service"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"description": "To return a single cyber alert, you must specify a threat ID, normally formatted XXXXX",
+						"in": "path",
+						"name": "pageNo",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			}
+		},
+		"/v1/dataRegister/dbo/table/ONS_CHD_GEO_LISTINGS/query/download/{bool}": {
+			"get": {
+				"operationId": "QueryTableDownload",
+				"responses": {
+					"200": {
+						"description": "0",
+						"content": {
+							"application/json": {
+								"schema": {
+									"anyOf": [
+										{
+											"$ref": "#/components/schemas/Welcome4"
+										},
+										{
+											"type": "string"
+										}
+									]
+								}
+							}
+						}
+					}
+				},
+				"summary": "This returns a list of cyber alerts",
+				"tags": [
+					"Data Registers Service"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"description": "To return a single cyber alert, you must specify a threat ID, normally formatted XXXXX",
+						"in": "path",
+						"name": "bool",
+						"required": true,
+						"schema": {
+							"type": "boolean"
+						}
+					}
+				]
+			}
+		},
+		"/v1/dataRegister/dbo/table/ONS_CHD_GEO_LISTINGS/query/filter/{filter}": {
+			"get": {
+				"operationId": "FilterItems",
+				"responses": {
+					"200": {
+						"description": "0",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Welcome4"
+								}
+							}
+						}
+					}
+				},
+				"summary": "This returns a list of cyber alerts",
+				"tags": [
+					"Data Registers Service"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"description": "Filter argument must be <b>all</b>, <b>latest</b> or <b>archived</b>",
+						"in": "path",
+						"name": "filter",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/v1/personalDemoGraphics": {
+			"get": {
+				"operationId": "GetPatientData",
+				"responses": {
+					"200": {
+						"description": "personalDemo",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/personalDemo"
+								}
+							}
+						}
+					}
+				},
+				"summary": "sdfafasdf",
+				"tags": [
+					"Personal Demographics Service"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "header",
+						"name": "AuthToken",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"in": "header",
+						"name": "NHSD-Session-URID",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"in": "header",
+						"name": "X-Request-ID",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"in": "header",
+						"name": "X-Correlation-ID",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		}
+	},
+	"servers": [
+		{
+			"url": "/"
+		}
+	],
+	"tags": [
+		{
+			"name": "UK Bank Holidays",
+			"description": "Bank Holidays | Returns JSON calender data of UK bank holidays with a divisions hash for separate data per region (united-kingdom, england-and-wales, scotland or northern-ireland)"
+		},
+		{
+			"name": "Data.gov.uk Dataset",
+			"description": "This API allows you to access the data.gov.uk dataset metadata in a machine-readable way, as JSON. A dataset's metadata includes details such as title, description, usage licence, and a list of 'resources', which describe each data file that makes up the dataset. Each resource contains a format, description and URL (for example for download)"
+		},
+		{
+			"name": "Ambulance Analytics",
+			"description": "Submit ambulance analytics data to our Data Processing Service (DPS) for analysis and review by NHS England and ambulance trusts."
+		},
+		{
+			"name": "Cyber Alerts",
+			"description": "Access a feed of alerts issued by our cyber security centre."
+		},
+		{
+			"name": "Data Registers Service",
+			"description": "Responding to demand from across the health system, NHS Digital have developed the Data Registers Service. This will provide a single trusted source and location for data registers."
+		},
+		{
+			"name": "Personal Demographics Service",
+			"description": "Use this API to access the Personal Demographics Service (PDS) - the national electronic database of NHS patient details such as name, address, date of birth, related people, registered GP and NHS number"
+		}
+	]
+}
